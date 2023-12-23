@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    int x;
+    while(cin>>x)
+    {
+        long long int sum=1,num=1;
+        cout<<1<<' ';
+        for(int i=1;i<=x;i++)
+        {
+            sum=sum*(x-i+1)/(i);
+            cout<<sum<<' ';
+            num+=sum;
+        }
+        cout<<num<<'\n';
+    }
+    return 0;
+}
