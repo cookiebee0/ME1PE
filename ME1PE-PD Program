@@ -1,0 +1,63 @@
+#include <iostream>
+#include <sstream>
+#include <string>
+using namespace std;
+
+int main()
+{
+  string s;
+  int tn;
+  while(cin>>s>>tn)
+  {
+    int day;
+    if(s[2]=='/')
+    day=(s[0]-'0')*10+s[1]-'0';
+    else
+    day=s[0]-'0';
+    int a[tn+1];
+    fill(a,a+tn+1,0);
+    string n;
+    cin.ignore();
+    getline(cin,n);
+    stringstream ss(n);
+    int temp;
+    while(ss>>temp)
+    {
+      a[temp]=99;
+    }
+    int i=0,stu=day,ang=0,t;
+    while(i<8)
+    {
+      if(a[stu]==3)
+      {
+        stu=t+1;
+      }
+      if(a[stu]==99)
+      {
+        t=stu;
+        a[stu]=3;
+        ang++;
+        stu+=10;
+      }
+      if(a[stu]==0)
+      {
+        if(i!=0)
+        cout<<" ";
+        i++;
+        a[stu]=3;
+        t=stu;
+        cout<<stu;
+        stu+=10;
+      }
+      
+      if(stu>tn)
+      {
+        stu--;
+        stu=stu%10;
+        stu++;
+      }
+    }
+    cout<<endl<<"Li's angry number is "<<ang<<endl;
+  }
+  return 0;
+}
